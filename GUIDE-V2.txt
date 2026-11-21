@@ -1,0 +1,18 @@
+SMPM31 — V2.0 (interface GDO/GTO)
+
+INSTALLATION SANS COMMANDE SQL
+1. Dans GitHub, ouvrez votre dépôt SMPM-31.
+2. Remplacez index.html et app.js par ceux de cette archive (Add file > Upload files, puis Commit changes).
+3. Conservez votre config.js déjà en ligne : inutile de le remplacer.
+4. Actualisez la page de l’application, au besoin avec Ctrl+F5.
+
+CHANGEMENTS
+- Nouvelle présentation adaptée au smartphone.
+- Compteur de documents filtrés et recherche améliorée.
+- Distinction visuelle PDF / lien.
+- Messages d’erreur de consultation PDF plus explicites.
+- Aucune modification du schéma Supabase ni des permissions.
+
+IMPORTANT
+Cette version ne valide pas la sécurité Supabase : contrôler les politiques RLS des tables, les règles du bucket privé gdo-gto et la fonction can_manage_documents avant toute utilisation réelle.
+La réinitialisation de mot de passe nécessite encore une interface de traitement des liens de récupération.
