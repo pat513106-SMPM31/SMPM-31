@@ -1,0 +1,19 @@
+SMPM31 - Version connectée à Supabase (prototype de test)
+
+1. Ouvrez config.js avec un éditeur de texte.
+2. Remplacez REMPLACER_PAR_VOTRE_CLE_SB_PUBLISHABLE par votre clé PUBLIQUE Supabase sb_publishable_... (ou clé anon publique). Ne mettez JAMAIS de clé service_role, sb_secret ou mot de passe.
+3. Placez les fichiers sur un hébergement statique HTTPS (par exemple GitHub Pages, dépôt sans secrets). Une URL publique ne rend pas les données accessibles sans authentification si RLS est correctement configuré.
+4. Dans Supabase Authentication > URL Configuration, ajoutez l'adresse HTTPS de votre site à la liste des Redirect URLs (pour les liens de réinitialisation).
+5. Testez avec un compte fictif actif, puis un compte fictif non référent. Les contrôles d'accès doivent être validés dans Supabase, pas seulement dans l'interface.
+
+IMPORTANT : cette version est une base de test, PAS une application validée pour des données opérationnelles SDIS.
+- Le module GDO/GTO lit les tables profiles et documents existantes et le bucket privé gdo-gto.
+- Il permet connexion, lecture, lien HTTPS, upload PDF, archivage.
+- Les autres rubriques sont des emplacements réservés.
+- Les PDF remplacés restent stockés pour éviter de détruire l'historique. Prévoir ensuite une gestion de versions et de conservation.
+- La réinitialisation du mot de passe nécessite un traitement du lien de récupération à finaliser : utilisez d'abord l'interface Supabase Authentication pour les tests.
+- Vérifier les politiques RLS sur profiles, documents et storage.objects, la fonction can_manage_documents(), les sauvegardes et la conformité RGPD avant données réelles.
+- La configuration SQL d'origine comporte un trigger protect_profile_fields qui interdit la modification de role/active par UPDATE. Pour attribuer d'autres rôles, prévoir une procédure d'administration sécurisée, sans désactiver cette protection à l'aveugle.
+- Les offres gratuites peuvent avoir des quotas, mises en veille et absence de sauvegardes automatiques.
+
+Cette application charge supabase-js depuis esm.sh. Une connexion Internet est nécessaire.
